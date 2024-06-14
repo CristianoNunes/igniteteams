@@ -3,7 +3,7 @@ import { FlatList } from "react-native";
 
 import { GroupCard } from "@components/GroupCard";
 import { Header } from "@components/Header";
-import { Hightlight } from "@components/Hightlight";
+import { Highlight } from "@components/Highlight";
 
 import { Container } from "./styles";
 import { ListEmpty } from "@components/ListEmpty";
@@ -16,7 +16,7 @@ export function Groups() {
     <Container>
       <Header />
 
-      <Hightlight title="Turma" subtitle="Jogue com a sua turma" />
+      <Highlight title="Turma" subtitle="Jogue com a sua turma" />
 
       <FlatList
         data={groups}
