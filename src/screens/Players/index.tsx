@@ -14,17 +14,7 @@ import { Button } from "@components/Button";
 
 export function Players() {
   const [team, setTeam] = useState("Time A");
-  const [players, setPlayers] = useState([
-    "Cristiano",
-    "Pedro",
-    "Joselania",
-    "Christian",
-    "Clarice",
-    "Silvia",
-    "Cecilia",
-    "Maria Luiza",
-    "Camile",
-  ]);
+  const [players, setPlayers] = useState([]);
   return (
     <Container>
       <Header showBackButton />
