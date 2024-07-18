@@ -15,6 +15,7 @@ import { Button } from "@components/Button";
 export function Players() {
   const [team, setTeam] = useState("Time A");
   const [players, setPlayers] = useState([]);
+
   return (
     <Container>
       <Header showBackButton />
