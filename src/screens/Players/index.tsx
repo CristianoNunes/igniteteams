@@ -18,6 +18,7 @@ import { ListEmpty } from "@components/ListEmpty";
 import { PlayerCard } from "@components/PlayerCard";
 
 import { Container, Form, HeaderList, NumberOfPlayers } from "./styles";
+import { playerRemoveByGroup } from "@storage/player/playerRemoveByGroup";
 
 type RouteParams = {
   group: string;
@@ -50,6 +51,7 @@ export function Players() {
       newPlayerNameInputRef.current?.blur();
 
       setNewPlayerName("");
+
       await fetchPlayersByTeam();
     } catch (error) {
       if (error instanceof AppError) {
@@ -71,6 +73,18 @@ export function Players() {
         "Jogadores",
         "Não foi possível carregar os jogadores do time selecionado."
       );
+    }
+  }
+
+  async function handlePlayerRemove(playerName: string) {
+    try {
+      await playerRemoveByGroup(playerName, group);
+
+      fetchPlayersByTeam();
+    } catch (error) {
+      console.log(error);
+
+      Alert.alert("Remover pessoa", "Não foi possível remover essa pessoa.");
     }
   }
 
@@ -115,7 +129,10 @@ export function Players() {
         data={players}
         keyExtractor={(item) => item.name}
         renderItem={({ item }) => (
-          <PlayerCard name={item.name} onRemove={() => {}} />
+          <PlayerCard
+            name={item.name}
+            onRemove={() => handlePlayerRemove(item.name)}
+          />
         )}
         ListEmptyComponent={() => (
           <ListEmpty message="Não há pessoas nesse time" />
